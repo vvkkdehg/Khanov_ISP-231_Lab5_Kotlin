@@ -1,11 +1,14 @@
-class Hero {
-    var name: String = "Undefined"
-    var gender: String = "Не указан"
-    var role: String = "Бродяга"
-    var hp: Int = 100
-    var mp: Int = 50
-    var level: Int = 1
-    var stikh: String = "Огонь"
+package charactrers
+import world.Quest
+class Hero(
+    var name: String,
+    var gender: String,
+    var role: String,
+    var hp: Int,
+    var mp: Int,
+    var level: Int,
+    var stikh: String
+) {
 
     fun sayHello() {
         println("Мое имя - $name. Мое путешествие только начинается")
@@ -82,5 +85,33 @@ class Hero {
         println("Состояние героев:")
         this.showStatus()
         opponent.showStatus()
+    }
+
+    fun isAlive(): Boolean {
+        return hp > 0
+    }
+    fun canAcceptQuest(quest: Quest): Boolean{
+        val canAccept = when (quest.difficulty.lowercase()) {
+            "лёгкий" -> level >= 1
+            "средний" -> level >= 3
+            "сложный" -> level >= 5
+            else -> false
+        }
+
+        if (canAccept) {
+            println("$name может принять квест '${quest.title}'!")
+        }
+        else {
+            println("$name не может принять квест '${quest.title}'. Требуется более высокий уровень.")
+        }
+        return canAccept
+    }
+    fun canCast(spell: magic.Spell): Boolean{
+        if (spell.name.length <= level * 2 && spell.width <= 5 && spell.height <= 5){
+            return true
+        }
+        else{
+            return false
+        }
     }
 }
