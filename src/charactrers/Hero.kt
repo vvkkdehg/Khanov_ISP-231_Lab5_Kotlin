@@ -1,14 +1,15 @@
 package charactrers
 import world.Quest
 class Hero(
-    var name: String,
-    var gender: String,
-    var role: String,
-    var hp: Int,
+    name: String,
+    var gender: String = "Неизвестный",
+    var role: String = "Неизвестный",
+    hp: Int = 0,
     var mp: Int,
-    var level: Int,
-    var stikh: String
-) {
+    var level: Int = 0,
+    stikh: String = "Неизвестный",
+    val expirience: Int = 0
+) : GameCharacter(name, hp, stikh){
 
     fun sayHello() {
         println("Мое имя - $name. Мое путешествие только начинается")
