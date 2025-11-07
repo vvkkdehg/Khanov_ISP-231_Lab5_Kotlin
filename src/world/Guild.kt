@@ -44,30 +44,101 @@ fun main() {
 //
 //    val quest2 = Quest(title = "Рыбалка", duration = 0, reward = 500, difficulty = "Лёгкий")
 //    println("${quest2.title}: ${quest2.goldPerHour()} золота в час")
-
-    val quest = Quest(title = "Поиск артефакта", duration = 3, reward = 800, difficulty = "Средний")
-    val contract = Contract(title = "Защита каравана", clientName = "Гильдия купцов", taskDescription = "Охрана груза", reward = 1200)
-    val specialOp = SpecialOperation(title = "Операция 'Тень'", reward = 2500, requiredClearance = 2, isCovert = true)
-
-    println("Информация о квесте:")
-    println("Название: ${quest.title}, Награда: ${quest.reward}")
-
-    println("\nИнформание о контракте:")
-    println("Название: ${contract.title}, Заказчик: ${contract.clientName}")
-
-    println("\nИнформация о спецоперации:")
-    println("Название: ${specialOp.title}")
-    specialOp.showReward()
-    val missions = listOf(
-        Quest(title = "Охота на монстров", duration = 3, reward = 600, difficulty = "Средний"),
-        SpecialOperation(title = "Ночной рейд", reward = 1500, requiredClearance = 2, isCovert = true),
-        Contract(title = "Сопровождение каравана", clientName = "Гильдия Торговцев",
-            taskDescription = "Доставить груз через лес", reward = 600, isUrgent = true)
+//
+//    val quest = Quest(title = "Поиск артефакта", duration = 3, reward = 800, difficulty = "Средний")
+//    val contract = Contract(title = "Защита каравана", clientName = "Гильдия купцов", taskDescription = "Охрана груза", reward = 1200)
+//    val specialOp = SpecialOperation(title = "Операция 'Тень'", reward = 2500, requiredClearance = 2, isCovert = true)
+//
+//    println("Информация о квесте:")
+//    println("Название: ${quest.title}, Награда: ${quest.reward}")
+//
+//    println("\nИнформание о контракте:")
+//    println("Название: ${contract.title}, Заказчик: ${contract.clientName}")
+//
+//    println("\nИнформация о спецоперации:")
+//    println("Название: ${specialOp.title}")
+//    specialOp.showReward()
+//    val missions = listOf(
+//        Quest(title = "Охота на монстров", duration = 3, reward = 600, difficulty = "Средний"),
+//        SpecialOperation(title = "Ночной рейд", reward = 1500, requiredClearance = 2, isCovert = true),
+//        Contract(title = "Сопровождение каравана", clientName = "Гильдия Торговцев",
+//            taskDescription = "Доставить груз через лес", reward = 600, isUrgent = true)
+//    )
+//
+//    for (mission in missions) {
+//        mission.describe()
+//        println("Высокая награда? ${if (mission.isHighReward()) "Да" else "Нет"}")
+//        println()
+//    }
+    val escortQuest = Quest(
+        title = "Сопроводи торговца до деревни",
+        duration = 4,
+        reward = 120,
+        difficulty = "Средний",
+        questType = QuestType.ESCORT
     )
+    escortQuest.printInfo()
 
-    for (mission in missions) {
-        mission.describe()
-        println("Высокая награда? ${if (mission.isHighReward()) "Да" else "Нет"}")
-        println()
+    //Самостоятельное задание 1.
+
+    val quest1 = Quest(
+        title = "Устрани гонца",
+        duration = 3,
+        reward = 200,
+        difficulty = "Средний",
+        questType = QuestType.ELIMINATION
+    )
+    val quest2 = Quest(
+        title = "Битва с главарем разбойников",
+        duration = 5,
+        reward = 1000,
+        difficulty = "Сложный",
+        questType = QuestType.BOSSFIGHT
+    )
+    val quest3 = Quest(
+        title = "Доставить письмо королю",
+        duration = 3,
+        reward = 100,
+        difficulty = "Легкий",
+        questType = QuestType.DELIVERY
+
+    )
+    val quest4 = Quest(
+        title = "Исследовать поместье Милославского",
+        duration = 6,
+        reward = 400,
+        difficulty = "Сложный",
+        questType = QuestType.EXPLORE
+
+    )
+    escortQuest.describe()
+    escortQuest.printInfo()
+    println()
+    quest1.describe()
+    quest1.printInfo()
+    println()
+    quest2.describe()
+    quest2.printInfo()
+    println()
+    quest3.describe()
+    quest3.printInfo()
+    println()
+    quest4.describe()
+    quest4.printInfo()
+    println()
+    println("Квесты типа EXPLORE:")
+    val quests = listOf(escortQuest, quest1, quest2, quest3, quest4)
+    OnlyExplore(quests)
+}
+fun OnlyExplore(quests: List<Quest>){
+    var kvest = false
+    for (i in quests) {
+        if (i.questType == QuestType.EXPLORE) {
+            i.printInfo()
+            kvest = true
+        }
+    }
+    if (!kvest){
+        println("Квестов типа 'Исследование' не найдено")
     }
 }

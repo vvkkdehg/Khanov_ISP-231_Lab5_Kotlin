@@ -1,5 +1,6 @@
 package charactrers
-
+import world.Quest
+import world.QuestType
 fun main() {
 //    val naruto = Hero("Наруто узумаки", "Мужской", "Хокаге", 350, 120, 1, "Огонь")
 //    naruto.name = "Наруто Узумаки"
@@ -49,33 +50,47 @@ fun main() {
 //    val enemy3 = Enemy("Дракон", 200, "Огонь")
 //    println("${enemy3.name}: ${enemy3.getThreatLevel()}")
 
-    val blacksmith = NPC(name = "Кузнец Ульфрик", hasQuest = true)
-    println(blacksmith.giveQuest())
-    blacksmith.trade()
+//    val blacksmith = NPC(name = "Кузнец Ульфрик", hasQuest = true)
+//    println(blacksmith.giveQuest())
+//    blacksmith.trade()
+//
+//    val dragon = Boss(name = "Алдуин", hp = 500, stikh = "Огонь", phaseCount = 4, isFinalBoss = true)
+//    dragon.startPhase(phaseNumber = 2)
+//    println(dragon.dropLoot())
+//    dragon.takeDamage(amount = 150)
+//
+//    val enemy: Enemy = Enemy(
+//        "Джин",
+//        hp = 100,
+//        stikh = "Огонь",
+//        aggressionLevel = 2,
+//    )
+//    val hero: Hero = Hero(
+//        "Наруто",
+//        gender = "Мужской",
+//        role = "Хокаге",
+//        hp = 150,
+//        mp = 100,
+//        level = 3,
+//        stikh = "Вода",
+//        expirience = 3
+//    )
+//    val npc: NPC = NPC("Торговец")
+//    println(enemy.name)
+//    (enemy as Enemy).takeDamage(20)
+//    enemy.takeDamage(20)
 
-    val dragon = Boss(name = "Алдуин", hp = 500, stikh = "Огонь", phaseCount = 4, isFinalBoss = true)
-    dragon.startPhase(phaseNumber = 2)
-    println(dragon.dropLoot())
-    dragon.takeDamage(amount = 150)
+//    val trader = Trader(name = "Ральф")
+//
+//    trader.addQuest(Quest(title = "Собрать травы", duration = 2, reward = 50, difficulty = "Лёгкий", questType = QuestType.DELIVERY))
+//    trader.addQuest(Quest(title = "Убить волков", duration = 3, reward = 100, difficulty = "Средний", questType = QuestType.ELIMINATION))
+//
+//    trader.showAvailableQuests()
+//
+//    val selectedQuest = trader.giveQuest(index = 1)
+//    selectedQuest.describe()
 
-    val enemy: Enemy = Enemy(
-        "Джин",
-        hp = 100,
-        stikh = "Огонь",
-        aggressionLevel = 2,
-    )
-    val hero: Hero = Hero(
-        "Наруто",
-        gender = "Мужской",
-        role = "Хокаге",
-        hp = 150,
-        mp = 100,
-        level = 3,
-        stikh = "Вода",
-        expirience = 3
-    )
-    val npc: NPC = NPC("Торговец")
-    println(enemy.name)
-    (enemy as Enemy).takeDamage(20)
-    enemy.takeDamage(20)
+    //Самостоятельное задание 2
+    val trader = Trader("Васёк")
+    trader.start()
 }
